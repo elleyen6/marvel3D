@@ -18,11 +18,16 @@ def create_model_from_data(vertices, indices):
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO)
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.nbytes, indices, GL_STATIC_DRAW)
 
+    # Position attribute (3 floats)
     stride = 8 * ctypes.sizeof(ctypes.c_float)
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, stride, ctypes.c_void_p(0))
     glEnableVertexAttribArray(0)
+    
+    # Normal attribute (3 floats)
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, stride, ctypes.c_void_p(12))
     glEnableVertexAttribArray(1)
+    
+    # Texture coordinates (2 floats)
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, stride, ctypes.c_void_p(24))
     glEnableVertexAttribArray(2)
 
